@@ -13,7 +13,7 @@ const createPhoto = function (i, image) {
   imageElement.classList.add(`gallery-item-${i}`);
   // imageElement.setAttribute("data-index", i);
 
-  imageElement.innerHTML = `<img class="gallery-img-${i}" src="${image}" alt="gallery-pic" data-index="${i}"/> `;
+  imageElement.innerHTML = `<img class="gallery-img gallery-img-${i}" src="${image}" alt="gallery-pic" data-index="${i}"/> `;
 
   gallerySlider.append(imageElement);
 };
@@ -26,6 +26,15 @@ for (let i = 1; i <= 5; i++) {
 //adding selected image
 
 const selectImageContainer = document.querySelector(".selected-item");
+const gallery = document.querySelectorAll(".gallery-img");
+
+const togglingActiveClass = function (num) {
+  gallery.forEach((item) => item.classList.remove("active"));
+  const getImage = document.querySelector(`.gallery-img-${num}`);
+  getImage.classList.add("active");
+};
+
+togglingActiveClass(currentNum);
 
 const createImage = document.createElement("img");
 createImage.classList.add("selected-image");
@@ -39,13 +48,16 @@ gallerySlider.addEventListener("click", function (e) {
   const image = e.target;
   currentNum = +image.dataset.index;
   imageSelected.src = image.src;
-  console.log(image);
+  gallery.forEach((item) => item.classList.remove("active"));
+
+  image.classList.add("active");
 });
 
 //adding eventhandler to the arrows
 
 const allImages = document.querySelectorAll(".gallery-item");
 const selectedImage = document.querySelector(".selected-image");
+
 let length = allImages.length;
 
 rightArrow.addEventListener("click", function () {
@@ -56,8 +68,8 @@ rightArrow.addEventListener("click", function () {
   } else {
     leftArrow.style.color = "black";
     currentNum = currentNum + 1;
-    const getImage = document.querySelector(`.gallery-img-${currentNum}`);
 
+    togglingActiveClass(currentNum);
     selectedImage.src = `/photos/photo-${currentNum}.jpg`;
   }
 });
@@ -70,6 +82,7 @@ leftArrow.addEventListener("click", function () {
   } else {
     rightArrow.style.color = "black";
     currentNum = currentNum - 1;
+    togglingActiveClass(currentNum);
     selectedImage.src = `/photos/photo-${currentNum}.jpg`;
     // console.log(currentNum);
   }
