@@ -1,14 +1,19 @@
 "use strict";
 
 const gallerySlider = document.querySelector(".slider");
+const galleryContainer = document.querySelector(".container");
+const rightArrow = document.querySelector(".arrow-right");
+const leftArrow = document.querySelector(".arrow-left");
 
+let currentNum = 1;
 //creating inserting images into the slider element
 const createPhoto = function (i, image) {
   const imageElement = document.createElement("div");
   imageElement.classList.add(`gallery-item`);
   imageElement.classList.add(`gallery-item-${i}`);
+  // imageElement.setAttribute("data-index", i);
 
-  imageElement.innerHTML = `<img class="gallery-img-${i}" src="${image}" alt="gallery-pic"/> `;
+  imageElement.innerHTML = `<img class="gallery-img-${i}" src="${image}" alt="gallery-pic" data-index="${i}"/> `;
 
   gallerySlider.append(imageElement);
 };
@@ -18,9 +23,54 @@ for (let i = 1; i <= 5; i++) {
   createPhoto(i, image);
 }
 
-//listening to which image was clicked
+//adding selected image
 
+const selectImageContainer = document.querySelector(".selected-item");
+
+const createImage = document.createElement("img");
+createImage.classList.add("selected-image");
+createImage.src = "/photos/photo-1.jpg";
+
+selectImageContainer.append(createImage);
+
+//replacing the current image with the selected Image
+const imageSelected = document.querySelector(".selected-image");
 gallerySlider.addEventListener("click", function (e) {
-  const imageSelected = e.target;
-  console.log(imageSelected);
+  const image = e.target;
+  currentNum = +image.dataset.index;
+  imageSelected.src = image.src;
+  console.log(image);
+});
+
+//adding eventhandler to the arrows
+
+const allImages = document.querySelectorAll(".gallery-item");
+const selectedImage = document.querySelector(".selected-image");
+let length = allImages.length;
+
+rightArrow.addEventListener("click", function () {
+  //increase
+  if (currentNum >= length) {
+    rightArrow.style.color = "red";
+    return;
+  } else {
+    leftArrow.style.color = "black";
+    currentNum = currentNum + 1;
+    const getImage = document.querySelector(`.gallery-img-${currentNum}`);
+
+    selectedImage.src = `/photos/photo-${currentNum}.jpg`;
+  }
+});
+
+leftArrow.addEventListener("click", function () {
+  //decrease
+  if (currentNum <= 1) {
+    leftArrow.style.color = "red";
+    return;
+  } else {
+    rightArrow.style.color = "black";
+    currentNum = currentNum - 1;
+    selectedImage.src = `/photos/photo-${currentNum}.jpg`;
+    // console.log(currentNum);
+  }
 });

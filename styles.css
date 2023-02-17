@@ -41,11 +41,34 @@ img {
   object-fit: cover;
 }
 
-.selected-image {
-  width: 45rem;
-  height: 50rem;
+.selected-container {
+  width: 90%;
+  margin: auto;
+  position: relative;
 }
 
-.selected-image {
+.selected-item {
+  margin: auto;
+  width: 50rem;
+  height: 45rem;
   align-self: center;
+}
+
+.arrow {
+  width: 40px;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.arrow:hover,
+img:hover {
+  cursor: pointer;
+}
+
+.arrow-right {
+  right: 0;
+}
+.arrow-left {
+  left: 0;
 }
