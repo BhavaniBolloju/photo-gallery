@@ -18,7 +18,7 @@ const createPhoto = function (i, image) {
   gallerySlider.append(imageElement);
 };
 
-for (let i = 1; i <= 5; i++) {
+for (let i = 1; i <= 10; i++) {
   const image = `/photos/photo-${i}.jpg`;
   createPhoto(i, image);
 }
@@ -46,6 +46,7 @@ selectImageContainer.append(createImage);
 const imageSelected = document.querySelector(".selected-image");
 gallerySlider.addEventListener("click", function (e) {
   const image = e.target;
+  if (!image.classList.contains("gallery-img")) return;
   currentNum = +image.dataset.index;
   imageSelected.src = image.src;
   gallery.forEach((item) => item.classList.remove("active"));

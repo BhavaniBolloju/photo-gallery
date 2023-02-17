@@ -16,6 +16,10 @@ body {
   margin: 2rem auto;
 }
 
+main {
+  margin: 5rem 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -24,14 +28,45 @@ body {
   gap: 3rem;
 }
 
+.slider-container {
+  overflow: hidden;
+  padding: 1rem 2rem;
+  width: 1100px;
+  margin: auto;
+  /* background: green; */
+  position: relative;
+  /* overflow: scroll; */
+}
+
+.slider-box {
+  overflow: hidden;
+  width: 1000px;
+  margin: auto;
+}
+
 .slider {
   display: flex;
   gap: 1rem;
-  align-self: center;
+  width: 3000px;
+  margin: 0 auto;
+  height: inherit;
+}
+
+.slider svg {
+  width: 30px;
+  color: #5a5959;
+}
+
+.slider .leftCursor {
+  left: 0;
+}
+.rightCursor {
+  right: 0rem;
 }
 
 .gallery-item {
-  height: 130px;
+  display: inline-block;
+  height: 100px;
   width: 150px;
 }
 
