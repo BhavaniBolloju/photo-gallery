@@ -4,6 +4,8 @@ const gallerySlider = document.querySelector(".slider");
 const galleryContainer = document.querySelector(".container");
 const rightArrow = document.querySelector(".arrow-right");
 const leftArrow = document.querySelector(".arrow-left");
+const leftCursor = document.querySelector(".leftCursor");
+const rightCursor = document.querySelector(".rightCursor");
 
 let currentNum = 1;
 //creating inserting images into the slider element
@@ -87,4 +89,20 @@ leftArrow.addEventListener("click", function () {
     selectedImage.src = `/photos/photo-${currentNum}.jpg`;
     // console.log(currentNum);
   }
+});
+
+const galleryItems = document.querySelectorAll(".gallery-item");
+let imageValue = 0;
+
+// leftCursor.addEventListener("click", function () {});
+rightCursor.addEventListener("click", function () {
+  console.log(imageValue);
+
+  galleryItems.forEach((item, i) => {
+    const index = item.querySelector(".gallery-img");
+    const indexNum = +index.dataset.index;
+    item.style.transform = `translateX(${(imageValue - indexNum) * 150}px)`;
+    console.log(`translateX(${(imageValue - indexNum) * 150}px)`);
+  });
+  imageValue += 1;
 });
