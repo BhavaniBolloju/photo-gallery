@@ -94,15 +94,24 @@ leftArrow.addEventListener("click", function () {
 const galleryItems = document.querySelectorAll(".gallery-item");
 let imageValue = 0;
 
-// leftCursor.addEventListener("click", function () {});
-rightCursor.addEventListener("click", function () {
-  console.log(imageValue);
+// rightCursor.addEventListener("click", function () {
+//   console.log(imageValue);
 
-  galleryItems.forEach((item, i) => {
-    const index = item.querySelector(".gallery-img");
-    const indexNum = +index.dataset.index;
-    item.style.transform = `translateX(${(imageValue - indexNum) * 150}px)`;
-    console.log(`translateX(${(imageValue - indexNum) * 150}px)`);
-  });
-  imageValue += 1;
-});
+//   galleryItems.forEach((item, i) => {
+//     const index = item.querySelector(".gallery-img");
+//     const indexNum = +index.dataset.index;
+//     item.style.transform = `translateX(${(imageValue - indexNum) * 150}px)`;
+//     console.log(`translateX(${(imageValue - indexNum) * 150}px)`);
+//   });
+//   imageValue += 1;
+// });
+
+// leftCursor.addEventListener("click", function (e) {
+//   galleryItems.forEach((item, i) => {
+//     const index = item.querySelector(".gallery-img");
+//     const indexNum = +index.dataset.index;
+//     item.style.transform = `translateX(${(imageValue - indexNum) * 150}px)`;
+//     console.log(`translateX(${(imageValue - indexNum) * 150}px)`);
+//   });
+//   imageValue -= 1;
+// });

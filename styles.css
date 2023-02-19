@@ -29,28 +29,15 @@ main {
 }
 
 .slider-container {
-  /* overflow: hidden; */
-  padding: 1rem 2rem;
-  width: 1100px;
-  margin: auto;
-  /* background: green; */
-  position: relative;
-  /* overflow: scroll; */
 }
 
 .slider-box {
-  overflow: hidden;
-  width: 1000px;
-  margin: auto;
+  width: 100rem;
 }
 
 .slider {
   display: flex;
-
   gap: 1rem;
-  width: 3000px;
-  margin: 0 auto;
-  height: inherit;
 }
 
 .slider svg {
@@ -66,9 +53,13 @@ main {
 }
 
 .gallery-item {
-  display: inline-block;
+  /* display: inline-block; */
   height: 100px;
   width: 150px;
+}
+
+.gallery-item-10 {
+  /* transform: translateX(-1440px); */
 }
 
 img {
