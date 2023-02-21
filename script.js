@@ -64,7 +64,6 @@ const selectedImage = document.querySelector(".selected-image");
 let length = allImages.length;
 
 rightArrow.addEventListener("click", function () {
-  //increase
   if (currentNum >= length) {
     rightArrow.style.color = "red";
     return;
@@ -87,31 +86,5 @@ leftArrow.addEventListener("click", function () {
     currentNum = currentNum - 1;
     togglingActiveClass(currentNum);
     selectedImage.src = `/photos/photo-${currentNum}.jpg`;
-    // console.log(currentNum);
   }
 });
-
-const galleryItems = document.querySelectorAll(".gallery-item");
-let imageValue = 0;
-
-// rightCursor.addEventListener("click", function () {
-//   console.log(imageValue);
-
-//   galleryItems.forEach((item, i) => {
-//     const index = item.querySelector(".gallery-img");
-//     const indexNum = +index.dataset.index;
-//     item.style.transform = `translateX(${(imageValue - indexNum) * 150}px)`;
-//     console.log(`translateX(${(imageValue - indexNum) * 150}px)`);
-//   });
-//   imageValue += 1;
-// });
-
-// leftCursor.addEventListener("click", function (e) {
-//   galleryItems.forEach((item, i) => {
-//     const index = item.querySelector(".gallery-img");
-//     const indexNum = +index.dataset.index;
-//     item.style.transform = `translateX(${(imageValue - indexNum) * 150}px)`;
-//     console.log(`translateX(${(imageValue - indexNum) * 150}px)`);
-//   });
-//   imageValue -= 1;
-// });
